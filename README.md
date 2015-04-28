@@ -6,19 +6,19 @@ Install dependencies
 npm install && composer install
 ```
 
-Start a node webserver to handle socket connections
+Start a node webserver to handle socket connections on port `3000`
 
 ```
 node socket.js
 ```
 
-Start the queue runner service
+Start the queue runner service, listening for redis events and emitting messages when commands are ran
 
 ```
 php queue.php
 ```
 
-Start a PHP webserver, which is where our client lives
+Start a PHP webserver on port `8000`, which is where our client lives
 
 ```
 php -S localhost:8000
