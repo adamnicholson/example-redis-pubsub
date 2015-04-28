@@ -11,8 +11,13 @@ function fire($job)
     ));
 
     if ($job instanceof LaunchMissilesCommand) {
-        sleep(5); // Takes a long time to launch a missile
-        $client->publish('appEvent', json_encode((object) ['key' => 'Missile launched', ['data' => ['time' => time()]]]));
+        $i = 5;
+        while ($i >= 1) {
+            $client->publish('appEvent', json_encode((object) ['key' => 'Missile launching in ' . $i]));
+            sleep(1);
+            $i--;
+        }
+        $client->publish('appEvent', json_encode((object) ['key' => 'Missile launched!!!']));
     }
 }
 
